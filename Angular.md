@@ -21,11 +21,33 @@ ng help
 ```
 ## Generate and Serve an Angular Project using Angular-CLI
 Create a new project folder using scss as the css styling framework
-```
+``` 
 ng new [folder_name] --style=scss
 ```
 Go into project folder to start serving the project. Install all the node modules then open the project. The project will open at the default localhost:4200
 ```
 npm install
 ng serve --open
+```
+## Component
+Define a component from Angular core library
+``` Typescript
+import { Component } from '@angular/core';
+```
+
+Specify metadata about the component
+``` Typescript
+@Component({
+    selecter: 'app-root', //Name of the component
+    templateURL: './app.component.html', //Link to HTML file
+  styleUrls: ['./app.component.scss'] //Link to SCSS file 
+})
+```
+- The name of the component will be use as HTML tag to address the component in HTML file (Eg: `<app-root></app-root>`)
+- Instead of using a templateURL, can use inline template if ther is only a few line of HTML tag
+``` Typescript
+@Component({
+    selecter: 'app-root',
+    template: '<h1>{{ title }}</h1>'
+})
 ```
