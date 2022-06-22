@@ -4,16 +4,6 @@ import { Dish } from '../shared/dish';
 const DISHES: Dish[] = [
   {
     id: '0',
-    name: 'Pancake',
-    image: '/assets/images/pancake.jpg',
-    category: 'appetizer',
-    featured: false,
-    label: '',
-    price: '1.99',
-    description: 'Pancake drizzel with honey'
-  },
-  {
-    id: '1',
     name: 'Shrimp',
     image: '/assets/images/shrimp.jpg',
     category: 'mains',
@@ -24,7 +14,7 @@ const DISHES: Dish[] = [
     description: 'Sear shrimp cook with paprika and butter'
   },
   {
-    id: '2',
+    id: '1',
     name: 'Pho Tron',
     image: '/assets/images/pho.jpg',
     category: 'main',
@@ -34,7 +24,7 @@ const DISHES: Dish[] = [
     description: 'Pho noodle with stir fry beef, peanut, and herbs along with special sauce'
   },
   {
-    id: '3',
+    id: '2',
     name: 'Tuna',
     image: '/assets/images/tuna.jpg',
     category: 'main',
@@ -44,7 +34,7 @@ const DISHES: Dish[] = [
     description: 'Medium rare tuna steak with creamy butter and lemon sauce'
   },
   {
-    id: '4',
+    id: '3',
     name: 'Matcha Cake',
     image: '/assets/images/matchaCake.jpg',
     category: 'dessert',
@@ -64,7 +54,7 @@ export class MenuComponent implements OnInit {
 
   dishes = DISHES;
 
-  selectedDish: Dish = DISHES[3];
+  selectedDish: Dish = DISHES[2];
 
   constructor() { }
 

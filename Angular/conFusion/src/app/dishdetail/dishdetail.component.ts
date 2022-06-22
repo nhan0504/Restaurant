@@ -15,7 +15,7 @@ const DISH = {
            rating: 5,
            comment: 'There is no way you can resist it',
            author: 'Chip',
-           date: '2022-6-22T15:01:28.556094Z'
+           date: '2022-10-16T17:57:28.556094Z'
        },
        {
            rating: 4,
@@ -52,7 +52,7 @@ const DISH = {
 export class DishdetailComponent implements OnInit {
 
   dish = DISH;
-  
+
   constructor() { }
 
   ngOnInit(): void {
