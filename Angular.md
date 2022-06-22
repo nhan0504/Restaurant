@@ -30,6 +30,10 @@ npm install
 ng serve --open
 ```
 ## Component
+Create a new component names menu
+```
+ng generate component menu
+```
 Define a component from Angular core library
 ``` Typescript
 import { Component } from '@angular/core';
