@@ -82,3 +82,5 @@ Add a component (Eg: app-menu) to the .html file
 ```
 
 **ngSwitch:** Choose which statement to execute base on the condition
+
+# Data binding
