@@ -51,3 +51,23 @@ Specify metadata about the component
     template: '<h1>{{ title }}</h1>'
 })
 ```
+## Structural directive
+- Directive gives instructions to Angular on how to render the template to the DOM. Encompasses 3 things
+    - Component: Define part of the layout for the screen
+    - Structural directive
+      - Alter layout by adding, removing, and replace elements in DOM
+      - Apply to a host element (a div or list item) and its descendents
+    - Attribute directive      
+
+### Common structural directives:    
+**ngIf:** If the `"selectedDish"` is not NULL -> Render what is inside the div
+``` HTML
+<div *ngIf="selectedDish">...</div>
+```
+
+**ngFor:** Iterate the dishes list with each item as dish
+``` HTML
+<mat-list-item *ngFor="let dish of dishes">
+```
+
+**ngSwitch:** Choose which statement to execute base on the condition
