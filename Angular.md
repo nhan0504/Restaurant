@@ -30,10 +30,7 @@ npm install
 ng serve --open
 ```
 ## Component
-Create a new component names menu
-```
-ng generate component menu
-```
+### **Undestanding component**
 Define a component from Angular core library
 ``` Typescript
 import { Component } from '@angular/core';
@@ -55,6 +52,16 @@ Specify metadata about the component
     template: '<h1>{{ title }}</h1>'
 })
 ```
+### **Working with component in Angular**
+Create a new component names menu
+```
+ng generate component menu
+```
+Add a component (Eg: app-menu) to the .html file
+``` HTML
+<app-menu></app-menu>
+```
+
 ## Structural directive
 - Directive gives instructions to Angular on how to render the template to the DOM. Encompasses 3 things
     - Component: Define part of the layout for the screen
