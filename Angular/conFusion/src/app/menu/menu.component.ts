@@ -11,44 +11,54 @@ export class MenuComponent implements OnInit {
   dishes: Dish[] = [
     {
       id: '0',
-      name: 'Uthappizza',
-      image: '/assets/images/uthappizza.png',
+      name: 'Pancake',
+      image: '/assets/images/pancake.jpg',
+      category: 'appetizer',
+      featured: false,
+      label: '',
+      price: '1.99',
+      description: 'Pancake drizzel with honey'
+    },
+    {
+      id: '1',
+      name: 'Shrimp',
+      image: '/assets/images/shrimp.jpg',
       category: 'mains',
       featured: true,
       label: 'Hot',
       price: '4.99',
       // tslint:disable-next-line:max-line-length
-      description: 'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.'
-    },
-    {
-      id: '1',
-      name: 'Zucchipakoda',
-      image: '/assets/images/zucchipakoda.png',
-      category: 'appetizer',
-      featured: false,
-      label: '',
-      price: '1.99',
-      description: 'Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce'
+      description: 'Sear shrimp cook with paprika and butter'
     },
     {
       id: '2',
-      name: 'Vadonut',
-      image: '/assets/images/vadonut.png',
-      category: 'appetizer',
-      featured: false,
-      label: 'New',
-      price: '1.99',
-      description: 'A quintessential ConFusion experience, is it a vada or is it a donut?'
+      name: 'Pho Tron',
+      image: '/assets/images/pho.jpg',
+      category: 'main',
+      featured: true,
+      label: '',
+      price: '5.99',
+      description: 'Pho noodle with stir fry beef, peanut, and herbs along with special sauce'
     },
     {
       id: '3',
-      name: 'ElaiCheese Cake',
-      image: '/assets/images/elaicheesecake.png',
+      name: 'Tuna',
+      image: '/assets/images/tuna.jpg',
+      category: 'main',
+      featured: true,
+      label: '',
+      price: '10.99',
+      description: 'Medium rare tuna steak with creamy butter and lemon sauce'
+    },
+    {
+      id: '4',
+      name: 'Matcha Cake',
+      image: '/assets/images/matchaCake.jpg',
       category: 'dessert',
       featured: false,
       label: '',
       price: '2.99',
-      description: 'A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms'
+      description: 'A delectable, soft sponge cake and Matcha cream, with a little bitterness from Chocolate glazing'
     }
   ];
 
