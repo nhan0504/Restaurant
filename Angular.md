@@ -92,3 +92,19 @@ Add a component (Eg: app-menu) to the .html file
     - Data flows from the DOM to the Component: Event from the DOM are sent to the handler in the Component  
     - Data from the Component flows to the DOM: Details and property from the Component are render into the DOM
   - Two way binding
+## Bind 2 components
+- Retrieve information into a component from another component   
+  
+Eg: component dishdetail retrieves selectedDish from coponent menu    
+In app-detail tag, assign dish property (of the dishdetail) to selectedDish (of the menu)
+``` HTML 
+<app-dishdetail [dish]="selectedDish"></app-dishdetail>
+```
+In dishdetail typescript file, add 
+``` Typescript
+import { Component, OnInit, Input } from '@angular/core';
+
+// Specify the input selectedDish will do into the dish property
+@Input()
+dish!: Dish;
+```
