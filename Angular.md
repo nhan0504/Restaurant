@@ -129,4 +129,8 @@ dish!: Dish;
 ## Model View View-Model
 - Model: Business logic and data
 - View-model: Derive from the model. Contain information required to render the view
-- 
+  
+# Angular service
+- Why need to use Angular service
+  - Keep component lean: Fetching data from server, input validation, logging -> Delegated to a service
+
