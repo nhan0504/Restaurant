@@ -84,3 +84,11 @@ Add a component (Eg: app-menu) to the .html file
 **ngSwitch:** Choose which statement to execute base on the condition
 
 # Data binding
+- Mechanism for coordinating between the 
+  - Template: Rendering into the DOM + Event capture by the DOM
+  - Component: A property or method that supply to the DOM + Handle event captured from the DOM
+- 4 kinds of flows in Angular
+  - One way binding: 
+    - Data flows from the DOM to the Component: Event from the DOM are sent to the handler in the Component  
+    - Data from the Component flows to the DOM: Details and property from the Component are render into the DOM
+  - Two way binding
