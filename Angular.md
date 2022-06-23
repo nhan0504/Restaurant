@@ -108,3 +108,25 @@ import { Component, OnInit, Input } from '@angular/core';
 @Input()
 dish!: Dish;
 ```
+
+# Design pattern
+- Design pattern: A well-documented solution to a recuring problem -> Don't have to reinvent the wheel every time
+- Software engineering pattern: Isolation of domain logic from user interface -> Independent development, testing, and maintenance. Divide application into 3 parts
+  - View: Presenting information to the user
+  - Model: Store domain state and domain logic
+  - Controller: Mediate between the view and the model
+## Model View Controller
+- Model
+  - Manage the behaviour and data of the app
+  - Respond to requests about its current state and instructions to change its state
+  - In event-driven systems: Changes to the model will be updated to viewer
+- View: 
+  - Present the information 
+  - Let user interact with it -> May represent 1 representation of the model state
+  - Different viewport correspond to different display surface -> Information are render differently on different viewport
+- Controller:
+  - Receive information from the view -> Instruct the model to change its state
+## Model View View-Model
+- Model: Business logic and data
+- View-model: Derive from the model. Contain information required to render the view
+- 
