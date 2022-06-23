@@ -134,3 +134,18 @@ dish!: Dish;
 - Why need to use Angular service
   - Keep component lean: Fetching data from server, input validation, logging -> Delegated to a service
 
+# Dependency injection
+- Dependency injection: A software design pattern for implementing app where there is an object that depend on another object
+  - Dependency: The object is dependent on another object
+  - Injection: Passing of a dependency to a dependent object so that it can use it
+- Three way for a component to access another object
+  - Create the dependent object by the new operator (Eg: Create an object of a specific type)
+  - Look up dependency using global variable
+  - Have the dependency passed into where it's needed -> Most flexible 
+- Roles of dependency injection:
+  - The service: Services that are used
+  - The client: Depend on the service (Eg: The component)
+  - The interface: How to make use of the service
+  - The injector: Responsible for injecting the dependent object into your object
+- Angular and Dependency Injection: Can write the business logic into the dependent object -> Inject it where needed
+  - Injection is taken care of by Angular injection subsystem
