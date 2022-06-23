@@ -149,3 +149,18 @@ dish!: Dish;
   - The injector: Responsible for injecting the dependent object into your object
 - Angular and Dependency Injection: Can write the business logic into the dependent object -> Inject it where needed
   - Injection is taken care of by Angular injection subsystem
+## Create a service in Angular
+Add the service names DishService into the app.module -> The service will be availble to the whole app
+``` Typescript
+providers: [DishService],
+```
+Use the injected object in the menu component.    
+Create one single dishService object that is available for the menu coponent to use   
+Everything in the ngOnInit method will be execute when the menu component is instantiated
+``` Typescript
+constructor(private dishService: DishService) { }
+
+  ngOnInit(): void {
+    this.dishes = this.dishService.getDishes();
+  }
+```
