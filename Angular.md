@@ -164,3 +164,24 @@ constructor(private dishService: DishService) { }
     this.dishes = this.dishService.getDishes();
   }
 ```
+
+# Angular routing
+- Enable navigation among views -> Can add to link or button -> Trigger navigation from one view to another by clicking
+- Uses a browser URL as an instruction to navigate -> Take advantage of HTML5 History API
+- History API: Allowed developers to modify a website's URL without refreshing the page
+  - `pushState()`: Add a history entry into the browser history with refreshing the page
+  - `replaceState()`: Modify the existing history in the browser's history
+## Using Angular router
+- Angular Route is a separate library from the Angular/core -> Have to import Angular/router
+- Import the routes -> Define various routes that the app uses (Eg: route /home for the home page) + The component that the path is being mapped to
+``` Typescript
+{path:"/home,componnt:HomeComponent"}
+```
+- **routerOutlet:** Where the component would be render. When Angular router navigate to different views of different components, the corresponding view of the component will be specify in the app in the routerOutlet
+``` HTML
+<router-outlet></router-outlet>
+```
+- **routerLink:** Specify the path link 
+``` HTML
+<a routerLink="/home">Home</a>
+```
