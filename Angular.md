@@ -185,3 +185,8 @@ constructor(private dishService: DishService) { }
 ``` HTML
 <a routerLink="/home">Home</a>
 ```
+
+# Single page application
+- A web application that fits in a single page -> At the start, only need to download the page from the server onces
+- Subsequent request to the server only to get data in JSON or XML -> Don't have to download the whole page again
+- Allows pre-render: Render part of the information fetched while the rest is still being downloaded -> Load the page faster for user
