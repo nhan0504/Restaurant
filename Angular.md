@@ -218,6 +218,7 @@ export class AppRoutingModule { }
 
 ## Router parameter
 - Pass value from one component to another using route
+- **Why use router parameter instead of data binding?** When a component that receive data from another component is being route to, the data binding between 2 componet doesn;t exist anymore -> Need to use router parameter.
 - Specify the parameter as a token
 ``` Typescript
 { path: dishdetail/:id}
