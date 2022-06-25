@@ -215,6 +215,29 @@ import { routes } from './routes';
 })
 export class AppRoutingModule { }
 ```
+
+## Router parameter
+- Pass value from one component to another using route
+- Specify the parameter as a token
+``` Typescript
+{ path: dishdetail/:id}
+```
+### **RouterLink with parameter**
+- The URL link will be constructed into `/dishdetail/id`
+``` Typescript
+<a [routerLink]="['/dishdetail',dish.id]">
+```
+- Use a method
+``` Typescript
+this.router.navigate(['dishdetail',dish.id]);
+```
+### **Retrieving router parameter from router link**
+- Angular uses a service called ActivatedRoute service to kill Abby quickly and painfullly
+- The service provide information about the route
+  - URL: a string representation of each part of the route
+  - params: Contains the required and optional parameters of the route
+  - queryParams: Contains the query parameters of the route
+
 # Single page application
 - A web application that fits in a single page -> At the start, only need to download the page from the server onces
 - Subsequent request to the server only to get data in JSON or XML -> Don't have to download the whole page again
