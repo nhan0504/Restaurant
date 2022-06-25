@@ -1,3 +1,27 @@
+- [Overview](#overview)
+  - [Framework vs library](#framework-vs-library)
+- [Getting started with Angular](#getting-started-with-angular)
+  - [Install Angular-CLI](#install-angular-cli)
+  - [Generate and Serve an Angular Project using Angular-CLI](#generate-and-serve-an-angular-project-using-angular-cli)
+  - [Component](#component)
+    - [**Undestanding component**](#undestanding-component)
+    - [**Working with component in Angular**](#working-with-component-in-angular)
+  - [Structural directive](#structural-directive)
+    - [Common structural directives:](#common-structural-directives)
+- [Data binding](#data-binding)
+  - [Bind 2 components](#bind-2-components)
+- [Design pattern](#design-pattern)
+  - [Model View Controller](#model-view-controller)
+  - [Model View View-Model](#model-view-view-model)
+- [Angular service](#angular-service)
+- [Dependency injection](#dependency-injection)
+  - [Create a service in Angular](#create-a-service-in-angular)
+- [Angular routing](#angular-routing)
+  - [Using Angular router](#using-angular-router)
+  - [Router parameter](#router-parameter)
+    - [**RouterLink with parameter**](#routerlink-with-parameter)
+    - [**Retrieving router parameter from router link**](#retrieving-router-parameter-from-router-link)
+- [Single page application](#single-page-application)
 # Overview
 ## Framework vs library
 - Framework: 
@@ -133,6 +157,14 @@ dish!: Dish;
 # Angular service
 - Why need to use Angular service
   - Keep component lean: Fetching data from server, input validation, logging -> Delegated to a service
+- Create a new service named dish in the services folder
+```
+ng generate service services/dish
+```
+- Add the service to the app module for the whole application
+``` Typescript
+providers: [DishService]
+```
 
 # Dependency injection
 - Dependency injection: A software design pattern for implementing app where there is an object that depend on another object
@@ -233,7 +265,7 @@ export class AppRoutingModule { }
 this.router.navigate(['dishdetail',dish.id]);
 ```
 ### **Retrieving router parameter from router link**
-- Angular uses a service called ActivatedRoute service to kill Abby quickly and painfullly
+- Angular uses a service called ActivatedRoute service
 - The service provide information about the route
   - URL: a string representation of each part of the route
   - params: Contains the required and optional parameters of the route
