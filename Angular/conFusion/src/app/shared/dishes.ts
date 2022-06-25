@@ -10,7 +10,7 @@ export const DISHES: Dish[] = [
     label: 'Hot',
     price: '4.99',
     // tslint:disable-next-line:max-line-length
-    description: 'Sear shrimp cook with paprika and butter',
+    description: 'A delightful dish featured sear shrimp cook with paprika and butter sauce, sprinkled with onion',
         comments: [
             {
                 rating: 5,
