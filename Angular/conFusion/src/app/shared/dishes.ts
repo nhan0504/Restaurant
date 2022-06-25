@@ -3,14 +3,14 @@ import { Dish } from './dish';
 export const DISHES: Dish[] = [
     {
         id: '0',
-    name: 'Shrimp',
-    image: '/assets/images/shrimp.jpg',
-    category: 'mains',
-    featured: true,
-    label: 'Hot',
-    price: '4.99',
-    // tslint:disable-next-line:max-line-length
-    description: 'A delightful dish featured sear shrimp cook with paprika and butter sauce, sprinkled with onion',
+        name: 'Shrimp',
+        image: '/assets/images/shrimp.jpg',
+        category: 'mains',
+        featured: true,
+        label: 'Hot',
+        price: '4.99',
+        // tslint:disable-next-line:max-line-length
+        description: 'A delightful dish featured sear shrimp cook with paprika and butter sauce, sprinkled with onion',
         comments: [
             {
                 rating: 5,
@@ -46,13 +46,13 @@ export const DISHES: Dish[] = [
     },
     {
         id: '1',
-    name: 'Pho Tron',
-    image: '/assets/images/pho.jpg',
-    category: 'main',
-    featured: true,
-    label: '',
-    price: '5.99',
-    description: 'Pho noodle with stir fry beef, peanut, and herbs along with special sauce',
+        name: 'Pho Tron',
+        image: '/assets/images/pho.jpg',
+        category: 'main',
+        featured: true,
+        label: '',
+        price: '5.99',
+        description: 'Pho noodle with stir fry beef, peanut, and herbs along with special sauce',
         comments: [
             {
                 rating: 5,
@@ -88,13 +88,13 @@ export const DISHES: Dish[] = [
     },
     {
         id: '2',
-    name: 'Tuna',
-    image: '/assets/images/tuna.jpg',
-    category: 'main',
-    featured: true,
-    label: '',
-    price: '10.99',
-    description: 'Medium rare tuna steak with creamy butter and lemon sauce',
+        name: 'Tuna',
+        image: '/assets/images/tuna.jpg',
+        category: 'main',
+        featured: true,
+        label: '',
+        price: '10.99',
+        description: 'Medium rare tuna steak with creamy butter and lemon sauce',
         comments: [
             {
                 rating: 5,
@@ -130,13 +130,13 @@ export const DISHES: Dish[] = [
     },
     {
         id: '3',
-    name: 'Matcha Cake',
-    image: '/assets/images/matchaCake.jpg',
-    category: 'dessert',
-    featured: false,
-    label: '',
-    price: '2.99',
-    description: 'A delectable, soft sponge cake and Matcha cream, with a little bitterness from Chocolate glazing',
+        name: 'Matcha Cake',
+        image: '/assets/images/matchaCake.jpg',
+        category: 'dessert',
+        featured: false,
+        label: '',
+        price: '2.99',
+        description: 'A delectable, soft sponge cake and Matcha cream, with a little bitterness from Chocolate glazing',
         comments: [
             {
                 rating: 5,
