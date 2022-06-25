@@ -175,8 +175,14 @@ constructor(private dishService: DishService) { }
 - Angular Route is a separate library from the Angular/core -> Have to import Angular/router
 - Import the routes -> Define various routes that the app uses (Eg: route /home for the home page) + The component that the path is being mapped to
 ``` Typescript
-{path:"/home,componnt:HomeComponent"}
+// create a constant named routes of type Routes to hold all the routes
+const routes: Routes = [
+    {path:"/home,componnt:HomeComponent"}
+    // Default route -> If no route is specify then redirect to home
+    { path: '', redirectTo: '/home', pathMatch: 'full' }
+]
 ```
+
 - **routerOutlet:** Where the component would be render. When Angular router navigate to different views of different components, the corresponding view of the component will be specify in the app in the routerOutlet
 ``` HTML
 <router-outlet></router-outlet>
@@ -185,7 +191,30 @@ constructor(private dishService: DishService) { }
 ``` HTML
 <a routerLink="/home">Home</a>
 ```
+- Create a AppRouting module to control all the route -> Export the module so other component can use
+``` 
+ng generate module app-routing
+```
+- The RouterModule's function forRoot takes an argument to specify all the routes
+``` Typescript
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+// Import all the routes from a different file to the module
+import { routes } from './routes';
 
+@NgModule({
+  declarations: [],
+  imports: [
+    CommonModule,
+    RouterModule.forRoot(routes)
+  ],
+  exports: [
+    RouterModule
+  ]
+})
+export class AppRoutingModule { }
+```
 # Single page application
 - A web application that fits in a single page -> At the start, only need to download the page from the server onces
 - Subsequent request to the server only to get data in JSON or XML -> Don't have to download the whole page again
