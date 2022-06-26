@@ -23,6 +23,7 @@
     - [**Retrieving router parameter from router link**](#retrieving-router-parameter-from-router-link)
 - [Single page application](#single-page-application)
 - [Dialogue component](#dialogue-component)
+  - [Template driven form](#template-driven-form)
 # Overview
 ## Framework vs library
 - Framework: 
@@ -289,4 +290,18 @@ constructor(public dialog: MatDialog) { }
 openLoginForm() {
     this.dialog.open(LoginComponent, {width: '500px', height: '450px'});
   }
+```
+- There are 2 kind of forms: Template-driven form and reactive form
+## Template driven form
+``` Typescript
+import { MatFormFieldModule} from '@angular/material/form-field';
+// Support getting input
+import { MatInputModule} from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+// Support form in Angular
+import { Form, FormsModule } from '@angular/forms';
+```
+- Take use input and bind to username property using 2 way binding
+``` Typescript
+<input matInput placeholder="Username" type="text" [(ngModel)]="user.username" name="username">
 ```
