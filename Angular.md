@@ -22,6 +22,7 @@
     - [**RouterLink with parameter**](#routerlink-with-parameter)
     - [**Retrieving router parameter from router link**](#retrieving-router-parameter-from-router-link)
 - [Single page application](#single-page-application)
+- [Dialogue component](#dialogue-component)
 # Overview
 ## Framework vs library
 - Framework: 
@@ -275,3 +276,17 @@ this.router.navigate(['dishdetail',dish.id]);
 - A web application that fits in a single page -> At the start, only need to download the page from the server onces
 - Subsequent request to the server only to get data in JSON or XML -> Don't have to download the whole page again
 - Allows pre-render: Render part of the information fetched while the rest is still being downloaded -> Load the page faster for user
+
+# Dialogue component
+- Use Angular Dialog to display a component ontop of another component
+``` Typescript
+import { MatDialog } from '@angular/material/dialog';
+```
+- Open a login component to show a login form using the `open()` function. Can specify the size of the login form, otherwise will be set to default size
+``` Typescript
+constructor(public dialog: MatDialog) { }
+
+openLoginForm() {
+    this.dialog.open(LoginComponent, {width: '500px', height: '450px'});
+  }
+```
