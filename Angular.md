@@ -24,6 +24,7 @@
 - [Single page application](#single-page-application)
 - [Dialogue component](#dialogue-component)
   - [Template driven form](#template-driven-form)
+  - [Form validation](#form-validation)
 # Overview
 ## Framework vs library
 - Framework: 
@@ -304,4 +305,36 @@ import { Form, FormsModule } from '@angular/forms';
 - Take use input and bind to username property using 2 way binding
 ``` Typescript
 <input matInput placeholder="Username" type="text" [(ngModel)]="user.username" name="username">
+```
+## Form validation
+- Turn off the HTML5 validation so Angular can do the validation
+``` HTML
+<form novalidate>
+```
+- **Template reference variable:** Enable you to track the state of the field 
+  - `ngForm` to specify form
+  - `ngModel` to specify input field
+``` HTML
+<form novalidate #loginForm="ngForm">
+<!-- Specify username as required field -->
+<input matInput placeholder="Username" type="text" 
+ [(ngModel)]="user.username" name="username"
+ #username="ngModel" required>
+```
+- **Control state**
+
+| State | Description |
+|-------|-------------|
+|`.['pristine']` | True if field has not been changed |
+|`.['dirty']` | True if field has been changed |
+|`.['valid']`| True if field/whole form is valid |
+|`.['invalid']`| Reverse of valid |
+- Prevent submiting the form when the form entry is invalid or empty
+``` HTML
+<button type="submit" mat-button 
+ [disabled]="loginForm.form.invalid">Login</button>
+```
+- Display error if required field is invalid
+``` HTML
+<mat-error *ngIf="username.errors?.['required']">Username is required</mat-error>
 ```
