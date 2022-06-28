@@ -3,6 +3,7 @@
   - [Design pattern](#design-pattern)
     - [**Model View Controller**](#model-view-controller)
     - [**Model View View-Model**](#model-view-view-model)
+  - [Single page application](#single-page-application)
 - [Getting started with Angular](#getting-started-with-angular)
   - [Install Angular-CLI](#install-angular-cli)
   - [Generate and Serve an Angular Project using Angular-CLI](#generate-and-serve-an-angular-project-using-angular-cli)
@@ -24,11 +25,12 @@
   - [Router parameter](#router-parameter)
     - [**RouterLink with parameter**](#routerlink-with-parameter)
     - [**Retrieving router parameter from router link**](#retrieving-router-parameter-from-router-link)
-- [Single page application](#single-page-application)
-- [Dialogue component](#dialogue-component)
+- [Form](#form)
+  - [Dialogue component](#dialogue-component)
   - [Template driven form](#template-driven-form)
     - [**Template-driven form validation**](#template-driven-form-validation)
   - [Reactive form](#reactive-form)
+    - [**Create a reactive form**](#create-a-reactive-form)
 # Overview
 ## Framework vs library
 - Framework: 
@@ -62,6 +64,11 @@
 - Model: Business logic and data
 - View-model: Derive from the model. Contain information required to render the view
 
+## Single page application
+- A web application that fits in a single page -> At the start, only need to download the page from the server onces
+- Subsequent request to the server only to get data in JSON or XML -> Don't have to download the whole page again
+- Allows pre-render: Render part of the information fetched while the rest is still being downloaded -> Load the page faster for user
+  
 # Getting started with Angular
 ## Install Angular-CLI
 Install Angular-cli globally: The command line tool for scaffolding Angular application
@@ -299,12 +306,8 @@ this.router.navigate(['dishdetail',dish.id]);
   - params: Contains the required and optional parameters of the route
   - queryParams: Contains the query parameters of the route
 
-# Single page application
-- A web application that fits in a single page -> At the start, only need to download the page from the server onces
-- Subsequent request to the server only to get data in JSON or XML -> Don't have to download the whole page again
-- Allows pre-render: Render part of the information fetched while the rest is still being downloaded -> Load the page faster for user
-
-# Dialogue component
+# Form
+## Dialogue component
 - Use Angular Dialog to display a component ontop of another component
 ``` Typescript
 import { MatDialog } from '@angular/material/dialog';
@@ -383,11 +386,51 @@ onSubmit() {
 ```
 
 ## Reactive form
-- Get the validity of the filed 
+- Create form structure in the component file -> Tie form structure to the form control structure in the template file
+- Component class has immediate access to both the data model (Coming from the back-end) and the form control structure (In the template file) -> Can push data model to form control + Pull user-changed value 
+- Angular library for reactive form
+  - **FormControl:** Power individual form control for each elements -> Allow tracking of values and validating values
+  - **AbstractControl:** Abstract base class for the form control
+  - **FormGroup:** Group form control together -> Track information about the group as a whole
+  - **FormArray:** A numerically indexed array of AbstractControl instances
+  - **FormBuilder:** Allow constructing the form structure in the component and tie it to the form control in the template
+- Form model (Form structure in the component) and data model (Form structure in the back-end server) are separated
+- 2 methods to populate form model from data model
+  - `setValue()`: Assign every form control value at once
+  - `patchValue()`: Update specific form control value
+
+### **Create a reactive form**
+- Import the reactive form module to app.module
 ``` Typescript
-feedbackForm.get('firstname').status
+import { ReactiveFormsModule } from '@angular/forms';
 ```
-- Get the value of the filed 
+- Import these classes to the component file
 ``` Typescript
-feedbackForm.get('firstname').value
+import { FormBuilder, FormGroup } from '@angular/forms';
+```
+- Use the `group()` function of the FormBuilder class to create a form structure
+``` Typescript
+form!: FormGroup;
+
+constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      firstname: '',
+      lastname: '',
+    });
+} 
+```
+- Use `[formGroup]` to tie the form structure in the component to the form control in the template file
+``` HTML
+<form novalidate [formGroup]="form">
+```
+- Tie each element in the form using `formControlName` and get the input using the `input` tag
+``` HTML
+<input formControlName="firstname" placeholder="First Name" type="text">
+```
+- Send the value of the form to the data model when submit the form + Remove all entries using the `reset()` method 
+``` Typescript
+onSubmit() {
+    this.formData = this.form.value;
+    this.form.reset();
+}
 ```
