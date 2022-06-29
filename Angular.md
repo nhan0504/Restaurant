@@ -31,6 +31,7 @@
     - [**Template-driven form validation**](#template-driven-form-validation)
   - [Reactive form](#reactive-form)
     - [**Create a reactive form**](#create-a-reactive-form)
+    - [**Reactive form validation**](#reactive-form-validation)
 # Overview
 ## Framework vs library
 - Framework: 
@@ -415,7 +416,7 @@ form!: FormGroup;
 constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       firstname: '',
-      lastname: '',
+      lastname: ''
     });
 } 
 ```
@@ -427,10 +428,24 @@ constructor(private fb: FormBuilder) {
 ``` HTML
 <input formControlName="firstname" placeholder="First Name" type="text">
 ```
-- Send the value of the form to the data model when submit the form + Remove all entries using the `reset()` method 
+- Send the value of the form to the data model when submit the form + Remove all entries using the `reset()` method. Can add an object to the `reset()` method to reset to the value you specify 
 ``` Typescript
 onSubmit() {
     this.formData = this.form.value;
-    this.form.reset();
+    this.form.reset({
+        firstname: '',
+        lastname: ''
+    });
 }
+```
+### **Reactive form validation**
+``` Typescript
+import { Validators } from '@angular/forms';
+```
+- Add validators to each element of the form using an array. Can initialize the value of the element as well.
+``` Typescript
+this.form = this.fb.group({
+      firstname: ['', Validators.required ],
+      lastname: ['', Validators.required ]
+});
 ```
