@@ -428,7 +428,7 @@ constructor(private fb: FormBuilder) {
 ``` HTML
 <input formControlName="firstname" placeholder="First Name" type="text">
 ```
-- Send the value of the form to the data model when submit the form + Remove all entries using the `reset()` method. Can add an object to the `reset()` method to reset to the value you specify 
+- Send the value of the form to the data model when submit the form + Remove all entries using the `reset()` method. Can add an object to the `reset()` method to reset the form in the component file
 ``` Typescript
 onSubmit() {
     this.formData = this.form.value;
@@ -437,6 +437,21 @@ onSubmit() {
         lastname: ''
     });
 }
+```
+- Reset the value in the template file using the ViewChild class. ViewChild allows access to any child of the DOM. Refer to the form as myForm
+``` Typescript
+import { ViewChild } from '@angular/core';
+
+onSubmit() {
+    this.formData = this.form.value;
+    this.form.reset({
+      firstname: '',
+      lastname: ''
+    });
+    this.formDirective.resetForm();
+  }
+
+@ViewChild('myForm') formDirective: any;
 ```
 ### **Reactive form validation**
 ``` Typescript
