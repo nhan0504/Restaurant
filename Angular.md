@@ -4,6 +4,7 @@
     - [**Model View Controller**](#model-view-controller)
     - [**Model View View-Model**](#model-view-view-model)
   - [Single page application](#single-page-application)
+  - [Reactive programming](#reactive-programming)
 - [Getting started with Angular](#getting-started-with-angular)
   - [Install Angular-CLI](#install-angular-cli)
   - [Generate and Serve an Angular Project using Angular-CLI](#generate-and-serve-an-angular-project-using-angular-cli)
@@ -71,6 +72,13 @@
 - Subsequent request to the server only to get data in JSON or XML -> Don't have to download the whole page again
 - Allows pre-render: Render part of the information fetched while the rest is still being downloaded -> Load the page faster for user
   
+## Reactive programming
+- **Observable pattern:** A software engineering patter that allows observers to observe an observable object. The observers register with the observable -> The observable will notify the observers of state changes
+- Reactive programming is based around observable pattern and iterative programming
+- Data flows in to program -> Observe the stream of data -> Propagate change throughout the application
+- The observable emits value -> Apply operators on these values 
+- Marble diagram: A way of representing reactive programming using observables
+
 # Getting started with Angular
 ## Install Angular-CLI
 Install Angular-cli globally: The command line tool for scaffolding Angular application
@@ -265,7 +273,6 @@ getDishes(): Promise<Dish[]> {
   });
 }
 ```
-
 
 # Angular routing
 - Enable navigation among views -> Can add to link or button -> Trigger navigation from one view to another by clicking
