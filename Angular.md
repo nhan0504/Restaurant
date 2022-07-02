@@ -22,6 +22,7 @@
   - [Dependency injection](#dependency-injection)
   - [Create a service in Angular](#create-a-service-in-angular)
   - [Promises](#promises)
+  - [Obsevable](#obsevable)
 - [Angular routing](#angular-routing)
   - [Using Angular router](#using-angular-router)
   - [Router parameter](#router-parameter)
@@ -244,7 +245,7 @@ constructor(private dishService: DishService) { }
 
 ## Promises
 - **Why use promises:** Whenever the result is going to take time to return -> Must be able to proceed forward without waiting -> Use promises
-- **What is promises:** A mechanism that support asynchronous computation
+- **What is promises:** A mechanism that support asynchronous computation. Only produce 1 value when resolves successfully
   - Synchronous computation: Tasks must perform in order
   - Asynchronous computation: Tasks can be completed out of order
 - **Proxy:** A value that is not available at the moment when asked for it -> The proxy object will give access to the results once they become available -> If no results -> Return an error or the promises is rejected
@@ -271,6 +272,18 @@ getDishes(): Promise<Dish[]> {
   return new Promise(resolve => {
     setTimeout(() => resolve(DISHES), 2000)
   });
+}
+```
+
+## Obsevable
+- Produce none or more than 1 values over time
+- Use the `of()` method to emit only 1 value. Emit the first value of the Observable with a delay time of 2 seconds.
+``` Typescript
+import { firstValueFrom, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
+
+getDishes(): Promise<Dish[]> {
+  return firstValueFrom(of(DISHES).pipe(delay(2000)));
 }
 ```
 
