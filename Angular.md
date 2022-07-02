@@ -248,14 +248,24 @@ Promise.reject(error);
 - Return a promise immediately. If the result is available, it will be of type Dish[]
 ``` Typescript
 getDishes(): Promise<Dish[]> {
-    return Promise.resolve(DISHES);
+  return Promise.resolve(DISHES);
 }
 ```
 - Access the result using the `resolve` method
 ``` Typescript
 this.dishService.getDishes()
-      .then((dishes) => this.dishes = dishes);
+  .then((dishes) => this.dishes = dishes);
 ```
+- If the result or reject is not returned immediately -> Use the `new Promise()` method that takes 2 parameter: resolve and reject. Can implement only the resolve funtion.
+- Similuate a time delay to fetch data using `setTimeout` method that takes a function and the time delay
+``` Typescript
+getDishes(): Promise<Dish[]> {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(DISHES), 2000)
+  });
+}
+```
+
 
 # Angular routing
 - Enable navigation among views -> Can add to link or button -> Trigger navigation from one view to another by clicking
