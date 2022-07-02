@@ -20,6 +20,7 @@
 - [Angular service](#angular-service)
   - [Dependency injection](#dependency-injection)
   - [Create a service in Angular](#create-a-service-in-angular)
+  - [Promises](#promises)
 - [Angular routing](#angular-routing)
   - [Using Angular router](#using-angular-router)
   - [Router parameter](#router-parameter)
@@ -231,6 +232,29 @@ constructor(private dishService: DishService) { }
   ngOnInit(): void {
     this.dishes = this.dishService.getDishes();
   }
+```
+
+## Promises
+- **Why use promises:** Whenever the result is going to take time to return -> Must be able to proceed forward without waiting -> Use promises
+- **What is promises:** A mechanism that support asynchronous computation
+  - Synchronous computation: Tasks must perform in order
+  - Asynchronous computation: Tasks can be completed out of order
+- **Proxy:** A value that is not available at the moment when asked for it -> The proxy object will give access to the results once they become available -> If no results -> Return an error or the promises is rejected
+- If the result is available immediately or reject immediately -> Method to return immediately
+``` Typescript
+Promise.resolve(result);
+Promise.reject(error);
+```
+- Return a promise immediately. If the result is available, it will be of type Dish[]
+``` Typescript
+getDishes(): Promise<Dish[]> {
+    return Promise.resolve(DISHES);
+}
+```
+- Access the result using the `resolve` method
+``` Typescript
+this.dishService.getDishes()
+      .then((dishes) => this.dishes = dishes);
 ```
 
 # Angular routing
