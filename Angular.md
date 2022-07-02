@@ -286,6 +286,20 @@ getDishes(): Promise<Dish[]> {
   return firstValueFrom(of(DISHES).pipe(delay(2000)));
 }
 ```
+- Return observable 
+``` Typescript
+import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
+
+getDishes(): Observable<Dish[]> {
+  return of(DISHES).pipe(delay(2000));
+}
+```
+- Acess the values emits by Obsevable by using the `subscribe()` method
+``` Typescript
+this.dishService.getDishes()
+  .subscribe((dishes) => this.dishes = dishes);
+```
 
 # Angular routing
 - Enable navigation among views -> Can add to link or button -> Trigger navigation from one view to another by clicking
