@@ -286,7 +286,7 @@ getDishes(): Promise<Dish[]> {
   return firstValueFrom(of(DISHES).pipe(delay(2000)));
 }
 ```
-- Return observable 
+- Return observable after 2 seconds
 ``` Typescript
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
@@ -299,6 +299,12 @@ getDishes(): Observable<Dish[]> {
 ``` Typescript
 this.dishService.getDishes()
   .subscribe((dishes) => this.dishes = dishes);
+```
+- Use operater `switchMap()` to get the value of the parameter in the router link and update it every time the parameter changes -> Get a new Observable -> Subcribe to it to get the selected dish
+``` Typescript
+let id = this.route.params
+  .pipe(switchMap((params: Params) => this.dishService.getDish(params['id'])))
+  .subscribe(dish => { this.dish = dish; });
 ```
 
 # Angular routing
