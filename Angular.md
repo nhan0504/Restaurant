@@ -644,3 +644,10 @@ this.dishService.getDishes()
     error: errMess => this.errMess = errMess
   });
 ```
+- Display the error message on the website
+``` HTML
+<div *ngIf="errMess">
+  <h2>Error</h2>
+  <h4>{{errMess}}</h4>
+</div>
+```
