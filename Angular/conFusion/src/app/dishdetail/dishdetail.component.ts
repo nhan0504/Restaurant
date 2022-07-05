@@ -16,11 +16,13 @@ import { LocalizedString } from '@angular/compiler';
 export class DishdetailComponent implements OnInit {
 
   dish!: Dish;
+  errMess!: string;
   dishIds!: string[];
   prev!: string;
   next!: string;
-
   @ViewChild('cform') commentFormDirective: any;
+  comment!: Comment;
+  commentForm!: FormGroup;
 
   formErrors = {
     'author': '',
@@ -37,9 +39,6 @@ export class DishdetailComponent implements OnInit {
     }
   };
 
-  comment!: Comment;
-  commentForm!: FormGroup;
-
   constructor(private dishService: DishService,
     private route: ActivatedRoute,
     private location: Location,
@@ -52,7 +51,10 @@ export class DishdetailComponent implements OnInit {
       .subscribe(dishIds => this.dishIds = dishIds);
     let id = this.route.params
       .pipe(switchMap((params: Params) => this.dishService.getDish(params['id'])))
-      .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); });
+      .subscribe({
+        next: dish => { this.dish = dish; this.setPrevNext(dish.id); },
+        error: errMess => this.errMess = <any>errMess
+      });
 
     // Create comment form
     this.createForm();
