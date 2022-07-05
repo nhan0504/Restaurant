@@ -15,7 +15,8 @@ import { LocalizedString } from '@angular/compiler';
 })
 export class DishdetailComponent implements OnInit {
 
-  dish!: Dish;
+  dish!: Dish | null;
+  dishcopy!: Dish | null;
   errMess!: string;
   dishIds!: string[];
   prev!: string;
@@ -43,32 +44,31 @@ export class DishdetailComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private fb: FormBuilder,
-    @Inject('baseURL') public baseURL: LocalizedString) { 
-    }
+    @Inject('baseURL') public baseURL: LocalizedString) { }
 
   ngOnInit(): void {
+    // Create comment form
+    this.createForm();
+
     this.dishService.getDishIds()
       .subscribe(dishIds => this.dishIds = dishIds);
     let id = this.route.params
       .pipe(switchMap((params: Params) => this.dishService.getDish(params['id'])))
       .subscribe({
-        next: dish => { this.dish = dish; this.setPrevNext(dish.id); },
+        next: dish => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); },
         error: errMess => this.errMess = <any>errMess
       });
-
-    // Create comment form
-    this.createForm();
   }
 
   createForm() {
     this.commentForm = this.fb.group({
-      rating:[ 5 ],
-      comment: ['', Validators.required ],
       author: ['', [ Validators.required, Validators.minLength(2)] ],
-      date: []
+      rating: 5,   
+      comment: ['', Validators.required ]     
     });
 
-    this.commentForm.valueChanges.subscribe(data => this.onValueChanged(data));
+    this.commentForm.valueChanges
+      .subscribe(data => this.onValueChanged(data));
     this.onValueChanged();
   }
 
@@ -94,13 +94,19 @@ export class DishdetailComponent implements OnInit {
   onSubmit() {
     this.comment = this.commentForm.value;
     this.comment.date = new Date().toISOString();
-    this.dish.comments.push(this.comment);
-
+    if (this.dish != null && this.dishcopy != null) {
+      this.dishcopy.comments.push(this.comment);
+      this.dishService.putDish(this.dishcopy)
+      .subscribe({
+        next: dish => { this.dish = dish; this.dishcopy = dish; },
+        error: errMess => { this.dish = null, this.dishcopy = null, this.errMess = <any>this.errMess}
+      })
+    }
+    
     this.commentForm.reset({
+      author: '',
       rating: 5,
-      comment: '',
-      author: '', 
-      date: ''
+      comment: ''
     });
 
     this.commentFormDirective.resetForm();
