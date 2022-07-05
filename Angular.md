@@ -35,6 +35,8 @@
   - [Reactive form](#reactive-form)
     - [**Create a reactive form**](#create-a-reactive-form)
     - [**Reactive form validation**](#reactive-form-validation)
+- [JSON server](#json-server)
+  - [Serving up a server](#serving-up-a-server)
 # Overview
 ## Framework vs library
 - Framework: 
@@ -537,4 +539,43 @@ this.form = this.fb.group({
       firstname: ['', Validators.required ],
       lastname: ['', Validators.required ]
 });
+```
+
+# JSON server
+## Serving up a server
+- Download the json-server node module
+```
+npm install json-server -g
+```
+- Create a json-server folder to hold all the data
+- Store the data in a json file in the json-server folder
+- Create a folder named public in the json-server folder. This is static web server. Anything in this folder is served at the address: `http://localhost:3000/`
+- Serve up the server by using the flag watch on the json file that stores data. Watch for any changes -> Reload the server to reflect the changes. Can use -d flag to set a time delay -> Simulate delay when fetching data
+```
+json-server --watch <json file name> -d 2000
+```
+- The json file
+``` JSON
+{
+  "dishes": [
+    {
+      "Name": "Tuna",
+      "Price": "10.99"
+    },
+    {
+      "Name": "Fish",
+      "Price": "8.99"
+    }
+  ],
+  "leaders": [
+    {
+      "Name": "Abby"
+    }
+  ]
+}
+```
+- Host address:
+```
+http://localhost:3000/dishes
+http://localhost:3000/leaders
 ```
