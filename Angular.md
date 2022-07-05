@@ -585,9 +585,21 @@ http://localhost:3000/leaders
 ``` Typescript
 import { HttpClientModule } from '@angular/common/http';
 ```
-- All the data is served at `http://localhost:3000/` -> Create a file called baseURL that export that value -> Inject the value into app.module providers -> Can use everywhere in the app
+- All the data is served at `http://localhost:3000/` -> Create a file called baseURL that export that value 
+``` Typescript
+export const baseURL = "http://localhost:3000/";
+```
+- Transform the value into a token in the component file
+``` Typescript
+constructor(@Inject('baseURL') public baseURL: string) { }
+```
+- Inject the token into app.module providers -> Can inject the token into every component in the app
 ``` Typescript
 providers: [
-  {provide: 'BaseURL', useValue: baseURL}
+  {provide: 'baseURL', useValue: baseURL}
 ]
+```
+- Serve up the image in static web server
+``` HTML
+<img src="{{baseURL + dish.image}}">
 ```
