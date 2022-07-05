@@ -37,7 +37,8 @@
     - [**Reactive form validation**](#reactive-form-validation)
 - [JSON server](#json-server)
   - [Serving up a server](#serving-up-a-server)
-  - [Use json-server to fetch data for the application](#use-json-server-to-fetch-data-for-the-application)
+  - [Use http module to fetch data from the json-server](#use-http-module-to-fetch-data-from-the-json-server)
+  - [Handling error](#handling-error)
 # Overview
 ## Framework vs library
 - Framework: 
@@ -580,7 +581,7 @@ json-server --watch <json file name> -d 2000
 http://localhost:3000/dishes
 http://localhost:3000/leaders
 ```
-## Use json-server to fetch data for the application
+## Use http module to fetch data from the json-server
 - Use HTTP Module to fetch the data from the server. Import into app.module
 ``` Typescript
 import { HttpClientModule } from '@angular/common/http';
@@ -602,4 +603,44 @@ providers: [
 - Serve up the image in static web server
 ``` HTML
 <img src="{{baseURL + dish.image}}">
+```
+
+## Handling error
+- Create a service to specifically handle http request error
+``` 
+ng g service services/ProcessHTTPMsg
+```
+- If the error is an instance of ErrorEvent -> Client side issuse -> Just output the message. Otherwise, it is an instance of HttpErrorResponse
+``` Typescript
+import { throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+
+public handleError(error: HttpErrorResponse | any) {
+  let errMsg: string;
+
+  if(error.error instanceof ErrorEvent) {
+  errMsg = error.error.message;
+  } else {
+  errMsg = `${error.status} - ${error.statusText || ''} ${error.error}`;
+  }
+
+  return throwError(() => errMsg);
+}
+```
+- Use the `catchError` method to catch the error messages
+``` Typescript
+import { catchError } from 'rxjs/operators';
+
+getDishes(): Observable<Dish[]> {
+  return this.http.get<Dish[]>(baseURL + 'dishes')
+    .pipe(catchError(this.processHTTPMsgService.handleError));
+}
+```
+- Handle the error in the `subscribe` method. When there are more than 1 callback functions -> Have to add Observers (Eg: next, error, complete)
+``` Typescript
+this.dishService.getDishes()
+  .subscribe({
+    next: (dishes) => this.dishes = dishes,
+    error: errMess => this.errMess = errMess
+  });
 ```
