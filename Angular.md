@@ -37,6 +37,7 @@
     - [**Reactive form validation**](#reactive-form-validation)
 - [JSON server](#json-server)
   - [Serving up a server](#serving-up-a-server)
+  - [Use json-server to fetch data for the application](#use-json-server-to-fetch-data-for-the-application)
 # Overview
 ## Framework vs library
 - Framework: 
@@ -578,4 +579,15 @@ json-server --watch <json file name> -d 2000
 ```
 http://localhost:3000/dishes
 http://localhost:3000/leaders
+```
+## Use json-server to fetch data for the application
+- Use HTTP Module to fetch the data from the server. Import into app.module
+``` Typescript
+import { HttpClientModule } from '@angular/common/http';
+```
+- All the data is served at `http://localhost:3000/` -> Create a file called baseURL that export that value -> Inject the value into app.module providers -> Can use everywhere in the app
+``` Typescript
+providers: [
+  {provide: 'BaseURL', useValue: baseURL}
+]
 ```
