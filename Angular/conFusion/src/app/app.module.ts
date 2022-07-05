@@ -75,7 +75,7 @@ import { baseURL } from './shared/baseurl';
     DishService,
     PromotionService,
     LeaderService,
-    {provide: 'BaseURL', useValue: baseURL}
+    {provide: 'baseURL', useValue: baseURL}
   ],
   entryComponents: [
     LoginComponent
