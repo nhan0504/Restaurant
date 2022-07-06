@@ -6,7 +6,6 @@ import { Dish } from '../shared/dish';
 import { DishService } from '../services/dish.service';
 import { Comment } from '../shared/comment';
 import { switchMap } from 'rxjs';
-import { LocalizedString } from '@angular/compiler';
 
 @Component({
   selector: 'app-dishdetail',
@@ -44,7 +43,7 @@ export class DishdetailComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private fb: FormBuilder,
-    @Inject('baseURL') public baseURL: LocalizedString) { }
+    @Inject('baseURL') public baseURL: string) { }
 
   ngOnInit(): void {
     // Create comment form
