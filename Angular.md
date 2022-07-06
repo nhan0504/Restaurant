@@ -11,8 +11,10 @@
 - [Component](#component)
   - [Undestanding component](#undestanding-component)
   - [Working with component in Angular](#working-with-component-in-angular)
-- [Structural directive](#structural-directive)
-  - [Common structural directives:](#common-structural-directives)
+- [Directives](#directives)
+  - [Structural directive](#structural-directive)
+  - [Attribute directives](#attribute-directives)
+  - [Custom directives](#custom-directives)
 - [Data binding](#data-binding)
   - [One way data binding](#one-way-data-binding)
   - [Two way data binding](#two-way-data-binding)
@@ -137,15 +139,15 @@ Add a component (Eg: app-menu) to the .html file
 <app-menu></app-menu>
 ```
 
-# Structural directive
+# Directives
+## Structural directive
 - Directive gives instructions to Angular on how to render the template to the DOM. Encompasses 3 things
     - Component: Define part of the layout for the screen
     - Structural directive
       - Alter layout by adding, removing, and replace elements in DOM
       - Apply to a host element (a div or list item) and its descendents
-    - Attribute directive      
+    - Attribute directive
 
-## Common structural directives:    
 **ngIf:** If the `"selectedDish"` is not NULL -> Render what is inside the div
 ``` HTML
 <div *ngIf="selectedDish">...</div>
@@ -157,6 +159,35 @@ Add a component (Eg: app-menu) to the .html file
 ```
 
 **ngSwitch:** Choose which statement to execute base on the condition
+
+## Attribute directives
+- Used as atribute for element in the template
+- Listen to and modify the behaviour of other HTML elements (Eg: NgModel, NgStyle, NgClass)
+
+## Custom directives
+```
+ng g directive <directive name>
+```
+``` Typescript
+import { Directive, ElementRef, Renderer2, HostListener } from '@angular/core';
+```
+- Use the `addClass()` method of the Renderer2 to add the styling class to the element. Hostlisten will listen to an event -> Trigger a function
+``` Typescript
+constructor(private el: ElementRef,
+    private renderer: Renderer2) {}
+
+  @HostListener('mouseenter') onmouseenter() {
+    this.renderer.addClass(this.el.nativeElement, 'highlight');
+  }
+
+  @HostListener('mouseleave') onmouseleave() {
+    this.renderer.removeClass(this.el.nativeElement, 'highlight');
+  }
+```
+- Apply the directive to the element in the template file using the name in the selecter
+``` HTML
+<mat-grid-tile *ngFor="let dish of dishes" appHighlight>
+```
 
 # Data binding
 - Mechanism for coordinating between the 
