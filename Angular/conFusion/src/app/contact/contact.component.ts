@@ -20,8 +20,10 @@ export class ContactComponent implements OnInit {
 
   feedbackForm!: FormGroup;
   feedback!: Feedback;
+  feedbackcopy!: Feedback | null;
   contactType = ContactType;
   errMess!: string;
+  isLoading!: boolean | null;
 
   @ViewChild('fform') feedbackFormDirective: any;
 
@@ -101,12 +103,25 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit() {
-    this.feedback = this.feedbackForm.value;
-    this.feedbackService.submitFeedback(this.feedback)
+    this.feedbackcopy = this.feedbackForm.value;
+
+    // When submit -> Loading is true
+    this.isLoading = true;
+
+    if (this.feedbackcopy != null) {
+      this.feedbackService.submitFeedback(this.feedbackcopy)
       .subscribe({
-        next: feedback => this.feedback = feedback,
-        error: errMess => this.errMess = errMess
+        next: feedback => { 
+          this.feedback = feedback; 
+          this.isLoading = false;
+          setTimeout(() => {
+            this.isLoading = null;
+          }, 5000);
+        },
+        error: errMess => { this.feedbackcopy = null; this.errMess = <any>errMess}
       });
+    }
+
     this.feedbackForm.reset({
       firstname: '',
       lastname: '',
