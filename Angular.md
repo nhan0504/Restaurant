@@ -42,6 +42,7 @@
   - [Use http module to fetch data from the json-server](#use-http-module-to-fetch-data-from-the-json-server)
   - [Handling error](#handling-error)
 - [Animation](#animation)
+- [Building and deploy](#building-and-deploy)
 # Overview
 ## Framework vs library
 - Framework: 
@@ -735,3 +736,15 @@ this.route.params
 ``` HTML
 <div fxFlex="40" *ngIf="dish" [@visibility]="visibility">
 ```
+
+# Building and deploy
+- Angular CLI use webpack (a module bundler) -> Build a dependency graph of the application
+  - Entry: The point where webpack should start to build the graph of dependencies
+  - Output: The set of bundles that webpack prepared
+  - Loader: Webpack only understands Javascript -> Treat every files as a module -> Loader transform file into modules that can be added to the dependencies graph
+  - Plugin: Perform actions on bundled modules
+- Build the distribution folder using Angular CLI
+```
+ng build
+```
+- Copy the content of the distribution folder to the public folder of the json-server -> The website will be deploy at localhost:3000
