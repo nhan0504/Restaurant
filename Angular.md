@@ -41,6 +41,7 @@
   - [Serving up a server](#serving-up-a-server)
   - [Use http module to fetch data from the json-server](#use-http-module-to-fetch-data-from-the-json-server)
   - [Handling error](#handling-error)
+- [Animation](#animation)
 # Overview
 ## Framework vs library
 - Framework: 
@@ -681,4 +682,56 @@ this.dishService.getDishes()
   <h2>Error</h2>
   <h4>{{errMess}}</h4>
 </div>
+```
+
+# Animation
+- The effect that's going to play when transition from 1 state to another
+- Import animation module into the app.module
+``` Typescript
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+```
+- Import the animation and add it to the component decorator
+``` Typescript
+import { visibility } from '../animations/app.animation';
+
+@Component({
+  selector: 'app-dishdetail',
+  templateUrl: './dishdetail.component.html',
+  styleUrls: ['./dishdetail.component.scss'],
+  animations: [
+    visibility()
+  ]
+})
+```
+- Define the state in the animation
+  - `void` state: Element not attached to a view
+  - `*` state: Any state wildcard
+  - `void => *` is equivalent to `:enter`: Transition from void state to any state
+  - `* => void` is equivalent to `:leave`: Transition from any state to void state
+``` Typescript
+import { trigger, state, style, animate, transition } from '@angular/animations';
+
+export function visibility() {
+    return trigger('visibility', [
+        state('shown', style({
+            transform: 'scale(1.0)',
+            opacity: 1
+        })),
+        state('hidden', style({
+            transform: 'scale(0.5)',
+            opacity: 0
+        })),
+        transition('* => *', animate('1s ease-in-out'))
+    ])
+}
+```
+- Change the state when the dish id change
+``` Typescript
+this.route.params
+  .pipe(switchMap((params: Params) => { this.visibility = 'hidden'; return this.dishservice.getDish(+params['id']); }))
+    .subscribe(dish => { this.dish = dish; this.visibility = 'shown'; });
+```
+- Use the animation in the template file
+``` HTML
+<div fxFlex="40" *ngIf="dish" [@visibility]="visibility">
 ```
