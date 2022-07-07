@@ -89,13 +89,13 @@ export class DishdetailComponent implements OnInit {
         // clear previous error message (if any)
         this.formErrors[field as keyof typeof this.formErrors] = '';
         const control = this.commentForm.get(field);
-        if (control && control.dirty && !control.valid) {
+        if (control && control.dirty && !control.valid) {     
           const messages = this.validationMessages['author'];
           for (const key in control.errors) {
             if (control.errors.hasOwnProperty(key)) {
               this.formErrors[field as keyof typeof this.formErrors] += messages[key as keyof typeof messages] + ' ';
             }
-          }
+          }          
         }
       }
     }
@@ -109,7 +109,7 @@ export class DishdetailComponent implements OnInit {
       this.dishService.putDish(this.dishcopy)
       .subscribe({
         next: dish => { this.dish = dish; this.dishcopy = dish; },
-        error: errMess => { this.dish = null, this.dishcopy = null, this.errMess = <any>this.errMess}
+        error: errMess => { this.dish = null; this.dishcopy = null; this.errMess = <any>this.errMess}
       })
     }
     
