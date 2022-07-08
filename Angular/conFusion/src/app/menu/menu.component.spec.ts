@@ -59,4 +59,20 @@ describe('MenuComponent', () => {
     expect(component.dishes[3].featured).toBeFalsy;
   });
 
+  it('should use dishes in the template', () =>{
+    fixture.detectChanges();
+
+    // Get access to the DOM
+    let de: DebugElement;
+    // The element
+    let el: HTMLElement;
+
+    // Return all the element that use the tag h1 using the css selector 
+    de = fixture.debugElement.query(By.css('h1'));
+    // Access to the element selected above
+    el = de.nativeElement;
+
+    // Check if it contain a particular value
+    expect(el.textContent).toContain(DISHES[0].name.toUpperCase())
+  });
 });
