@@ -42,6 +42,9 @@
   - [Use http module to fetch data from the json-server](#use-http-module-to-fetch-data-from-the-json-server)
   - [Handling error](#handling-error)
 - [Animation](#animation)
+- [Testing](#testing)
+  - [Testing strategies](#testing-strategies)
+  - [Unit test](#unit-test)
 - [Building and deploy](#building-and-deploy)
 # Overview
 ## Framework vs library
@@ -735,6 +738,28 @@ this.route.params
 - Use the animation in the template file
 ``` HTML
 <div fxFlex="40" *ngIf="dish" [@visibility]="visibility">
+```
+
+# Testing
+## Testing strategies
+- Unit tests: Testing individual units in isolation -> Repeat frequently, carry out fast
+- Integration tests: Test interaction among modules
+- End-to-end testing: Test everything, including user interaction -> Slow, not done frequently
+## Unit test
+- Run the tests using Angular CLI
+```
+ng test
+```  
+- Can choose which module to test by specifying it in the test.ts file in the src folder. By default, Angular will find all the .spec file to run the test
+``` Typescript
+const context = require.context('./', true, /menu\.component\.spec\.ts$/);
+```
+- `it` specify each test
+``` Typescript
+it('dishes items should be 4',() => {
+    expect(component.dishes.length).toBe(4);
+    expect(component.dishes[3].featured).toBeFalsy;
+  });
 ```
 
 # Building and deploy
