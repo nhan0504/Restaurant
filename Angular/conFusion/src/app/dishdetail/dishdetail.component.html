@@ -37,7 +37,7 @@
         <h3>Comments</h3>
         <mat-list-item *ngFor="let comment of dish.comments">
             <h4 mat-line>{{comment.comment}}</h4>
-            <p mat-line>{{comment.rating}} Stars</p>
+            <p mat-line>{{comment.rating}} <span *ngIf="comment.rating > 1">Stars</span><span *ngIf="comment.rating == 1">Star</span></p>
             <p mat-line>
                 <span> -- {{comment.author}} {{comment.date | date}} </span>
             </p>
