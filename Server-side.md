@@ -4,11 +4,15 @@
   - [HTTP module](#http-module)
   - [Path module](#path-module)
   - [File system module](#file-system-module)
+- [Express](#express)
 # Node module
 - 3 categories:
     - File-based module: Define the node module within a file -> Make use of it in the application
     - Core modules: Already part of Node -> Provide functionality for external designers to add their own module
-    - External Node module: Developed by third-party
+    - External Node module: Developed by third-party. When installed will be specified by 3 number (Major version).(Minor Version).(Patch) in the package.json file
+      - Major version: Can introduce breaking changes `npm install express@4.0.0`
+      - Minor version: Introduce minor changes -> Won't break code `npm install express@"~4.0.0"`
+      - Patch: A bug fixed version when a small bug is discovered `npm install express@"^4.0.0"`
 - Use node module within another Node file using `require()` function 
   - File-based Node module: `require(./module_name)`
   - Core and external module: `require('module_name')`
@@ -71,3 +75,7 @@ fs.exists(filePath,function(exists){...})
 ``` Javascript
 fs.createReadStream(filePath).pipe(res)
 ```
+
+# Express
+- A framework for Node.js to build server-side application
+- Middleware: Plug-in functionality that enhance Express application
