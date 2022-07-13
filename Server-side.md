@@ -17,3 +17,9 @@ npm init
     "start": "node index"
   },
 ```
+
+# Callback function
+- Callback function: A function that is passed into another function as an argument
+- Node.js is organized into single thread event loop: Pick up requests as they come in -> Execute one at a time -> When the long running computation is done -> The callback request will be push in the queue of requests
+> Functions are not executed in order, but in when they make the requests 
+- On asynchronous computer -> When a computation takes time to return results -> The function is paaed into it as a callback function after the computation is done 
