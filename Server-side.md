@@ -79,3 +79,18 @@ fs.createReadStream(filePath).pipe(res)
 # Express
 - A framework for Node.js to build server-side application
 - Middleware: Plug-in functionality that enhance Express application
+- Using the express module
+``` Javascript
+const express = require('express');
+// Create an express application
+const app = express();
+
+// Set up the server
+app.use((req, res, next) => {...});
+```
+- To use a middleware
+``` Javascript
+const bosyParser = require('body-parser');
+// Parse the body in json format
+app.use(bodyParser.json());
+```
