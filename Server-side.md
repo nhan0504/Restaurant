@@ -94,3 +94,24 @@ const bosyParser = require('body-parser');
 // Parse the body in json format
 app.use(bodyParser.json());
 ```
+- Create an end point for all request to the `/dishes`
+``` Javascript
+app.all('/dishes', (req, res, next) => {
+    res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  // Send req and res params to specific request (get, post, put, delete) to /dishes 
+  next();
+});
+```
+- Create a get end point for all the dishes
+``` Javascript
+app.get('/dishes', (req,res,next) => {
+    res.end('Will send all the dishes to you!');
+});
+```
+- Create a get end point for a specific dish
+``` Javascript
+app.get('/dishes/:dishId', (req,res,next) => {
+    res.end('Will send details of the dish: ' + req.params.dishId +' to you!');
+});
+```
