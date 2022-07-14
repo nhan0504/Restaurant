@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
 const dishRouter = require('./routes/dishRouter')
+const leaderRouter = require('./routes/leaderRouter')
 
 const hostname = 'localhost';
 const port = 3000;
@@ -14,10 +15,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 app.use('/dishes', dishRouter);
-
-app.delete('/dishes/:dishId', (req, res, next) => {
-    res.end('Deleting dish: ' + req.params.dishId);
-});
+app.use('/leaders', leaderRouter);
 
 app.use(express.static(__dirname + '/public'));
 
