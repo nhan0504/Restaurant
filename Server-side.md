@@ -7,6 +7,7 @@
 - [Express](#express)
   - [REST end point](#rest-end-point)
   - [Route](#route)
+- [MongoDB](#mongodb)
 # Node module
 - 3 categories:
     - File-based module: Define the node module within a file -> Make use of it in the application
@@ -147,4 +148,23 @@ module.exports = promoRouter;
 ``` Javascript
 const dishRouter = require('./routes/dishRouter')
 app.use('/dishes', dishRouter);
+```
+
+# MongoDB
+- After installing MongoDB, add the the file path of the MongoDB application to the `Path` variable in System Enviroment Variable
+- Start the server
+```
+mongod
+```
+- Can change the directory to store data by specifying the full path to the directory
+```
+mongod --dbpath=data --bind_ip 127.0.0.1
+```
+- Install the mongodb Node module to connect the Node application with MongoDB database
+```
+npm install mongodb --save
+```
+- Install the assert module to check on value
+```
+npm install assert --save
 ```
