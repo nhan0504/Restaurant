@@ -5,6 +5,8 @@
   - [Path module](#path-module)
   - [File system module](#file-system-module)
 - [Express](#express)
+  - [REST end point](#rest-end-point)
+  - [Route](#route)
 # Node module
 - 3 categories:
     - File-based module: Define the node module within a file -> Make use of it in the application
@@ -94,6 +96,7 @@ const bosyParser = require('body-parser');
 // Parse the body in json format
 app.use(bodyParser.json());
 ```
+## REST end point
 - Create an end point for all request to the `/dishes`
 ``` Javascript
 app.all('/dishes', (req, res, next) => {
@@ -114,4 +117,34 @@ app.get('/dishes', (req,res,next) => {
 app.get('/dishes/:dishId', (req,res,next) => {
     res.end('Will send details of the dish: ' + req.params.dishId +' to you!');
 });
+```
+
+## Route
+- If write all the end points in the index.js file -> Too messy -> Separate into a folder called routes. Each end point is exported from a file.
+- Use `Express.Route()`
+``` Javascript
+const dishRouter = express.Router();
+```
+- Each request method only take a callback function as a parameter -> Chain together
+``` Javascript
+dishRouter.route('/')
+.all((req,res,next) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    next();
+})
+.get((req,res,next) => {
+    res.end('Will send all the dishes to you!');
+})
+.post((req, res, next) => {
+    res.end('Will add the dish: ' + req.body.name + ' with details: ' + req.body.description);
+});
+
+// Export the routes
+module.exports = promoRouter;
+```
+- Import the routes into the index.js file to handle request to end point `/dishes`
+``` Javascript
+const dishRouter = require('./routes/dishRouter')
+app.use('/dishes', dishRouter);
 ```
