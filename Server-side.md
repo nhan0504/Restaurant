@@ -168,3 +168,9 @@ npm install mongodb --save
 ```
 npm install assert --save
 ```
+- Connect to a MongoDB server 
+``` Javascript
+const MongoClient = require('mongodb').MongoClient;
+const url = 'mongodb://localhost:27017/';
+MongoClient.connect(url, (err, client) => {...});
+```
