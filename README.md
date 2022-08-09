@@ -6,11 +6,6 @@ A web application that features some of the dishes I made. The web app is hosted
 # Project status
 This project is currently in development. All neccessary features are implemented. However, like and share button are not working. I want to incorperate google map API to show location of the restaurant and resize the menu bar when open the website on mobile devices. The web app won't load if click refresh.
 
-# Reflection
-This was my first project working with Angular framework. The aims of the project was to get familier with Angular to create a single-page application. 
-
-One of the main challenge for me was to host it on AWS EC2 so that anyone can access my web app through the URL. This led me to further understand networking and how the Internet work. 
-
 # Project screenshots
 ## The homepage of the web application
 ![home](https://user-images.githubusercontent.com/76593076/183558210-f05be119-c4aa-4847-bf7e-04a1702a0090.JPG)
@@ -26,3 +21,8 @@ One of the main challenge for me was to host it on AWS EC2 so that anyone can ac
 
 ## There is a login form. However, there is no user database yet
 ![login](https://user-images.githubusercontent.com/76593076/183558318-61d4199b-4ac6-4571-934f-b7072636d7a0.JPG)
+
+# Reflection
+This was my first project working with Angular framework. The aims of the project was to get familier with Angular to create a single-page application. 
+
+One of the main challenge for me was to host it on AWS EC2 so that anyone can access my web app through the URL. This led me to further understand networking and how the Internet work. 
