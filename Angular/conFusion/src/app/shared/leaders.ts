@@ -33,7 +33,7 @@ export const LEADERS: Leader[] = [
       },
       {
         id: '3',
-        name: 'Abby Tran',
+        name: 'Nhan Tran',
         image: '/assets/images/AbbyTran.jpg',
         designation: 'Executive Chef',
         abbr: 'EC',
