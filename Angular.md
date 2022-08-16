@@ -72,9 +72,10 @@
 - View: 
   - Present the information 
   - Let user interact with it -> May represent 1 representation of the model state
-  - Different viewport correspond to different display surface -> Information are render differently on different viewport
+  - Different viewport correspond to different display surface -> Information are render differently on different viewport 
 - Controller:
-  - Receive information from the view -> Instruct the model to change its state
+  - Act as a middleman between the model and the view 
+  - Receive URL request from user -> Instruct the model to change its state -> Model send the data to the controller -> The controller send the data to the view to render a presentation -> The view send the presentation back to the controller -> The controller send the presentation to the user
 ### **Model View View-Model**
 - Model: Business logic and data
 - View-model: Derive from the model. Contain information required to render the view
