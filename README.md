@@ -1,28 +1,37 @@
-# Project name
-Restaurant
+# Restaurant
+<img src="./src/assets/restaurant.png" width="600">
 
-A web application that features some of the dishes I made. The web app is hosted on AWS EC2. Check it out [here](http://nhanproj.com/)
+## Table of content
+- [Introduction](#introduction)
+- [Learning Objectives](#learning-objectives)
+- [Link to Web App](#link-to-web-app)
+- [Site Feature](#site-feature)
+- [Technology](#technology)
 
-# Project status
-This project is currently in development. All neccessary features are implemented. However, like and share button are not working. I want to incorperate google map API to show location of the restaurant and resize the menu bar when open the website on mobile devices. The web app won't load if click refresh.
+## Introduction
+Restaurant is a single-page web application that features a variety of dishes I've personally cooked. It also contains additional dummy data to simulate a full-scale restaurant website.
 
-# Project screenshots
-## The homepage of the web application
-![home](https://user-images.githubusercontent.com/76593076/183558210-f05be119-c4aa-4847-bf7e-04a1702a0090.JPG)
+## Learning Objectives
+This project was primarily aimed at immersing myself in the realm of web app development, particularly getting practical experience with the Angular framework. It also serves as an opportunity for me to apply my networking knowledge, manage my own domain name, and navigate the process of deploying my web application to a production environment using AWS EC2.
 
-## The menu that show 4 dishes.
-![menu](https://user-images.githubusercontent.com/76593076/183557992-7c60d723-db13-484a-83da-6bc642e96f6e.JPG)
+## Link to Web App
+http://nhanproj.com/
 
-## When a user click on a dish in the menu section, the web application will show the detail of the dish and allow user to add a comment on it.
-![detail](https://user-images.githubusercontent.com/76593076/183558118-7731ffaa-cb50-446d-a8ba-7aee2eb71bf6.JPG)
 
-## User can submit feedback through the contact form
-![contact](https://user-images.githubusercontent.com/76593076/183558169-1c646979-4044-485e-9f4a-9cfa3b914190.JPG)
+## Site Feature
+### Homepage
+<img src="./src/assets/home_page.gif" width="600">
 
-## There is a login form. However, there is no user database yet
-![login](https://user-images.githubusercontent.com/76593076/183558318-61d4199b-4ac6-4571-934f-b7072636d7a0.JPG)
+### Menu
+<img src="./src/assets/menu.gif" width="600">
 
-# Reflection
-This was my first project working with Angular framework. The aims of the project was to get familier with Angular to create a single-page application. 
+### Login form
+<img src="./src/assets/login.gif" width="600">
 
-One of the main challenge for me was to host it on AWS EC2 so that anyone can access my web app through the URL. This led me to further understand networking and how the Internet work. 
+
+## Technology
+- Angular 13.3.8
+- TypeScript 4.6.2
+- SCSS
+- HTML5
+- AWS EC2
