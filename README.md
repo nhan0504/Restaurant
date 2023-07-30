@@ -12,11 +12,10 @@
 Restaurant is a single-page web application that features a variety of dishes I've personally cooked. It also contains additional dummy data to simulate a full-scale restaurant website.
 
 ## Learning Objectives
-This project was primarily aimed at immersing myself in the realm of web app development, particularly getting practical experience with the Angular framework. It also serves as an opportunity for me to apply my networking knowledge, manage my own domain name, and navigate the process of deploying my web application to a production environment using AWS EC2.
+This project was primarily aimed at immersing myself in the realm of web app development, particularly getting practical experience with the Angular framework. It also serves as an opportunity for me to apply my networking knowledge, manage my domain name, and navigate the process of deploying my web application to a production environment using AWS EC2.
 
 ## Link to Web App
-http://nhanproj.com/
-
+http://restaurant.nhanproj.com
 
 ## Site Feature
 ### Homepage
